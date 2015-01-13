@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>Admin Login</title><!--Brendon Irwin&rsquo;s Page, cached and compressed for optimal speed. Cached & Compressed on Monday 12th of January 2015 08:18:45 PM--><meta name='description' content="Brendon Irwin's personal website" /><meta name='Keywords' content="Brendon Irwin, Brendon, Bren1818" /><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/><link rel="apple-touch-icon" href="/images/apple_touch_icon.png" /><link href='/css/cache_master.css' rel='stylesheet' type='text/css' /><link rel="stylesheet/less" type="text/css" href="/css/styles.less"><link rel="stylesheet" href="/admin/Admin_Includes/CodeMirror/lib/codemirror.css"/><script type="text/javascript" src="/admin/Admin_Includes/CodeMirror/lib/codemirror.js"></script><script type="text/javascript" src="/admin/Admin_Includes/CodeMirror/mode/xml/xml.js"></script><script type="text/javascript" src="/admin/Admin_Includes/CodeMirror/mode/javascript/javascript.js"></script><script type="text/javascript" src="/admin/Admin_Includes/CodeMirror/mode/css/css.js"></script><script type="text/javascript" src="/admin/Admin_Includes/CodeMirror/mode/htmlmixed/htmlmixed.js"></script><script type='text/javascript' src='/js/cache_master.js'></script> <!--<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'/><link href='http://fonts.googleapis.com/css?family=Dynalight' rel='stylesheet' type='text/css'/>--><script type="text/javascript">var pageId = 0;</script></head><body><div id="pageWrapper">	<div id="pageHeader">
+		<h1>Admin Login</h1>
+	</div>
+<div id="pageMenu"><ul class="menu_parent menu_horizontal menu_submenu_top"><li class="menu_item tier_0 menu_1"><a class="menu_item" href="/">Home</a></li><li class="menu_item tier_0 menu_2"><a class="menu_item" href="/links">Useful Links</a></li><li class="menu_item tier_0 menu_4"><a class="menu_item" href="#">Coding</a><ul class="menu_submenu tier1"><li class="menu_submenu_item tier_1 menu_57"><a class="menu_submenu_item" href="/regex">Regular Expressions</a></li><li class="menu_submenu_item tier_1 menu_58"><a class="menu_submenu_item" href="/evaltest">Using Eval PHP</a></li><li class="menu_submenu_item tier_1 menu_59"><a class="menu_submenu_item" href="/geomap">Location and G Maps</a></li><li class="menu_submenu_item tier_1 menu_67"><a class="menu_submenu_item" href="/jquery">Jquery Snippets</a></li><li class="menu_submenu_item tier_1 menu_68"><a class="menu_submenu_item" href="/javascript">Javascript vs JQuery</a></li><li class="menu_submenu_item tier_1 menu_69"><a class="menu_submenu_item" href="/csselectors">CSS Selectors</a></li><li class="menu_submenu_item tier_1 menu_70"><a class="menu_submenu_item" href="/sqlite">SQLite and Offline Storage</a></li></ul></li><li class="menu_item tier_0 menu_6"><a class="menu_item" href="/about">About Me</a><ul class="menu_submenu tier1"><li class="menu_submenu_item tier_1 menu_60"><a class="menu_submenu_item" href="/cover">Cover Letter</a></li><li class="menu_submenu_item tier_1 menu_7"><a class="menu_submenu_item" href="resume">Resume</a></li></ul></li><li class="menu_item tier_0 menu_9"><a class="menu_item" href="#">Other</a><ul class="menu_submenu tier1"><li class="menu_submenu_item tier_1 menu_10"><a class="menu_submenu_item" href="fringe">Fringe</a></li><li class="menu_submenu_item tier_1 menu_66"><a class="menu_submenu_item" href="/sticky">Sticky Note</a></li><li class="menu_submenu_item tier_1 menu_62"><a target="_blank" class="menu_submenu_item" href="/admin">Admin</a></li></ul></li></ul></div><div id="pageBody">	<script type="text/javascript">
+		$(function(){
+			$("#login").validator();
+		});
+	</script>
+	
+	<form id="login" class="inputForm" method="post" name="loginForm" action="/admin/admin.php" style="width:300px; height:200px; margin: 60px auto;" novalidate> <!--onsubmit="return validateForm()"-->
+		<div class="row center">
+			<span id="message">You have successfully been logged out.</span>
+		</div>
+		<div class="row">
+			<div class="titleCol">
+				Username:
+			</div>
+			<div class="valueCol">
+				<input type="text" name="username" value="" pattern="[a-zA-Z0-9]{5,}" maxlength="30" required="required"/>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="titleCol">
+				Password:
+			</div>
+			<div class="valueCol">
+				<input type="password" name="password" value="" required="required"/>
+			</div>
+		</div>
+
+		<div class="row center">
+			<input name="submit" type="submit" value="Login"/>
+		</div>
+	</form>
+
+<div id="push">&nbsp;</div></div><!-- pageBody--></div><!-- pageWrapper--><div id="pageFooterWrapper"><div id="pageFooterBody"></div></div></body></html>

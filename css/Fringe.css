@@ -1,0 +1,230 @@
+@charset "utf-8";
+/* FRINGE CSS */
+
+/*Fringe Glyphs*/
+
+#fringeControls .ui-slider-handle {
+  margin-left: -0.6em;
+ top: 0px;
+}
+
+#FringeCode{
+
+}
+
+#fringeControls{
+	/*border: 1px solid #5dd0ec;	*/
+}
+
+#MakeCode{
+	padding-left: 10px;	
+}
+
+.letter{
+	width: 200px;
+	height: 200px;
+	display: block;
+	float: left;
+	background-repeat: no-repeat;
+	background-size: 100%;
+	position: relative;	
+}
+
+.dot{
+	background-image:url(../images/Fringe/spot.png);
+	background-repeat: no-repeat;
+	height: 102px;
+	width: 102px;
+	background-size: 100%;
+	position:absolute;		
+}
+
+
+.flip-horizontal {
+    -moz-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: fliph; /*IE*/
+}
+.flip-vertical {
+    -moz-transform: scaleY(-1);
+    -webkit-transform: scaleY(-1);
+    -o-transform: scaleY(-1);
+    transform: scaleY(-1);
+    filter: flipv; /*IE*/
+}
+
+.letterA, .letterB, .letterG, .letterH{
+	background-image: url(../images/Fringe/LeafGlyph.jpg);	
+}
+
+.letterC, .letterD, .letterE, .letterF{
+	background-image:url(../images/Fringe/AppleGlyph.jpg);	
+}
+
+.letterI, .letterJ, .letterK, .letterL{
+	background-image:url(../images/Fringe/FlowerGlyph.jpg);	
+}
+
+.letterM, .letterN{
+	background-image:url(../images/Fringe/SeahorseGlyph.jpg);	
+}
+
+.letterO, .letterP{
+	background-image:url(../images/Fringe/ButterflyGlyph.jpg);	
+}
+
+.letterQ, .letterR{
+	background-image:url(../images/Fringe/FrogGlyph.jpg);
+}
+
+.letterS, .letterU{
+	background-image:url(../images/Fringe/HandGlyph.jpg);
+}
+
+.letterV, .letterW{
+	background-image:url(../images/Fringe/HandGlyphUp.jpg);
+}
+
+.letterX, .letterZ{
+	background-image:url(../images/Fringe/HandGlyphAccross.jpg);
+}
+
+.letterT, .letterY{
+	background-image:url(../images/Fringe/SmokeGlyph.jpg);
+}
+
+/*ABGH */
+.letterA .dot, .letterG .dot{
+	right: 30%; 	
+}
+
+.letterA .dot, .letterB .dot{
+	top: 10%; 	
+}
+
+.letterB .dot, .letterH .dot{
+	right: 30%; 	
+}
+
+.letterG .dot, .letterH .dot{
+	bottom: 20%; 	
+}
+
+
+/*CDEF*/
+
+.letterD .dot, .letterF .dot{
+	right: 10%; 	
+}
+
+.letterC .dot, .letterD .dot{
+	top: 10%; 	
+}
+
+.letterC .dot, .letterE .dot{
+	left: 10%; 	
+}
+
+.letterE .dot, .letterF .dot{
+	bottom: 12%; 	
+}
+
+/*IJKL*/
+
+.letterK .dot, .letterJ .dot{
+	left: 1%; 	
+}
+
+.letterI .dot, .letterJ .dot{
+	top: 4%; 	
+}
+
+.letterI .dot, .letterL .dot{
+	left: 1%; 	
+}
+
+.letterK .dot, .letterL .dot{
+	bottom: 7%; 	
+}
+
+/*MN*/
+.letterM .dot, .letterN .dot{
+	bottom: 30%;	
+}
+
+.letterM .dot{
+	right: 20%;	
+}
+
+.letterN .dot{
+	right: 30%;	
+}
+
+/*OP*/
+.letterO .dot, .letterP .dot{
+	bottom: 30%;	
+}
+
+.letterO .dot{
+	left: 1%;	
+}
+
+.letterP .dot{
+	right: 1%;	
+}
+
+
+/*QR*/
+.letterQ .dot, .letterR .dot{
+	bottom: 10%;	
+}
+
+.letterR .dot, .letterQ .dot{
+	right: 25%;	
+}
+
+
+/*SU*/
+
+.letterS .dot, .letterU .dot{
+	bottom: 10%;	
+}
+
+.letterS .dot, .letterU .dot{
+	left: 15%;	
+}
+
+/*TY*/
+.letterT .dot, .letterY .dot{
+	display: none;
+}
+
+/*VW*/
+
+.letterV .dot, .letterW .dot{
+	bottom: 40%;	
+}
+
+.letterW .dot, .letterV .dot{
+	left: 5%;	
+}
+
+/*XZ*/
+
+.letterX .dot, .letterZ .dot{
+	top: 30%;	
+}
+
+.letterX .dot, .letterZ .dot{
+	left: 10%;	
+}
+
+.letterB, .letterE, .letterF, .letterH, .letterJ, .letterK, .letterM, .letterQ, .letterW, .letterY, .letterU, .letterW, .letterZ{
+    -moz-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: fliph; /*IE*/
+}

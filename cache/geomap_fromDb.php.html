@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>Google Map - Geo Location</title><!--Brendon Irwin&rsquo;s Page, cached and compressed for optimal speed. Cached & Compressed on Monday 12th of January 2015 08:11:37 PM--><meta name='description' content="Google Map test" /><meta name='Keywords' content="Google, Google Maps, Geolocation, location, gps, html" /><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/><link rel="apple-touch-icon" href="/images/apple_touch_icon.png" /><link href='/css/cache_master.css' rel='stylesheet' type='text/css' /><link rel="stylesheet/less" type="text/css" href="/css/styles.less"><link rel="stylesheet" href="/admin/Admin_Includes/CodeMirror/lib/codemirror.css"/><script type="text/javascript" src="/admin/Admin_Includes/CodeMirror/lib/codemirror.js"></script><script type="text/javascript" src="/admin/Admin_Includes/CodeMirror/mode/xml/xml.js"></script><script type="text/javascript" src="/admin/Admin_Includes/CodeMirror/mode/javascript/javascript.js"></script><script type="text/javascript" src="/admin/Admin_Includes/CodeMirror/mode/css/css.js"></script><script type="text/javascript" src="/admin/Admin_Includes/CodeMirror/mode/htmlmixed/htmlmixed.js"></script><script type='text/javascript' src='/js/cache_master.js'></script> <!--<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'/><link href='http://fonts.googleapis.com/css?family=Dynalight' rel='stylesheet' type='text/css'/>--><script type="text/javascript">var pageId = 5;</script></head><body><div id="pageWrapper">	<div id="pageHeader">
+		<h1>Google Map - Geo Location</h1>
+	</div>
+<div id="pageMenu"><ul class="menu_parent menu_horizontal menu_submenu_top"><li class="menu_item tier_0 menu_1"><a class="menu_item" href="/">Home</a></li><li class="menu_item tier_0 menu_2"><a class="menu_item" href="/links">Useful Links</a></li><li class="menu_item tier_0 menu_4"><a class="menu_item" href="#">Coding</a><ul class="menu_submenu tier1"><li class="menu_submenu_item tier_1 menu_57"><a class="menu_submenu_item" href="/regex">Regular Expressions</a></li><li class="menu_submenu_item tier_1 menu_58"><a class="menu_submenu_item" href="/evaltest">Using Eval PHP</a></li><li class="menu_submenu_item tier_1 menu_59"><a class="menu_submenu_item" href="/geomap">Location and G Maps</a></li><li class="menu_submenu_item tier_1 menu_67"><a class="menu_submenu_item" href="/jquery">Jquery Snippets</a></li><li class="menu_submenu_item tier_1 menu_68"><a class="menu_submenu_item" href="/javascript">Javascript vs JQuery</a></li><li class="menu_submenu_item tier_1 menu_69"><a class="menu_submenu_item" href="/csselectors">CSS Selectors</a></li><li class="menu_submenu_item tier_1 menu_70"><a class="menu_submenu_item" href="/sqlite">SQLite and Offline Storage</a></li></ul></li><li class="menu_item tier_0 menu_6"><a class="menu_item" href="/about">About Me</a><ul class="menu_submenu tier1"><li class="menu_submenu_item tier_1 menu_60"><a class="menu_submenu_item" href="/cover">Cover Letter</a></li><li class="menu_submenu_item tier_1 menu_7"><a class="menu_submenu_item" href="resume">Resume</a></li></ul></li><li class="menu_item tier_0 menu_9"><a class="menu_item" href="#">Other</a><ul class="menu_submenu tier1"><li class="menu_submenu_item tier_1 menu_10"><a class="menu_submenu_item" href="fringe">Fringe</a></li><li class="menu_submenu_item tier_1 menu_11"><a target="_blank" class="menu_submenu_item" href="http://brendonirwin.dyndns.org:24811/gui/">uTorrent Web UI</a></li><li class="menu_submenu_item tier_1 menu_66"><a class="menu_submenu_item" href="/sticky">Sticky Note</a></li><li class="menu_submenu_item tier_1 menu_62"><a target="_blank" class="menu_submenu_item" href="/admin">Admin</a></li></ul></li></ul></div><div id="pageBody"><div class="page" id="page_one_column">
+  <div id="column1" class="column" style="width: 100%"><div class="container container_html" id="container_7"><div id="Map" style="width: 100%; height: 600px;"> </div>
+<script type="text/javascript">
+$(function(){
+    function success(position) {
+      
+        var LAT = position.coords.latitude;
+        var LONG = position.coords.longitude;
+		$('#Map').append('<p>Current Latitude: ' + LAT + '<br/>Current Logitude: ' + LONG +'<br/><br/>Note* This may not display your exact location, but just your city. Works better on mobile devices</p>');
+
+
+        var map  = '<iframe style="width: 100%; height: 600px;" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.ca/maps?source=s_d&saddr=' + LAT +',+' + LONG +'&daddr=147+Wyndham+Street+N+,+Suite+206,+Guelph,+On,+N1H+4E9&ie=UTF8&t=h&output=embed"></iframe>';
+        
+        $('#Map').append(map);
+        
+    }
+
+    function error(){
+        /*Error Code*/
+    }
+
+    function MakeMap(){
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(success, error);
+        } else {
+
+		}
+    }
+
+    MakeMap();
+});
+</script>
+<div class="clear" style="padding-top:10px; clear:both">
+<h1>Code to Generate above </h1>
+<p>&lt;div id="Map" style="width: 100%; height: 600px;"&gt; &lt;/div&gt;<br />&lt;script type="text/javascript"&gt;<br />$(function(){<br />function success(position) {</p>
+<p>var LAT = position.coords.latitude;<br />var LONG = position.coords.longitude;<br />$('#Map').append('&lt;p&gt;Current Latitude: ' + LAT + '&lt;br/&gt;Current Logitude: ' + LONG +'&lt;br/&gt;&lt;br/&gt;Note* This may not display your exact location, but just your city. Works better on mobile devices&lt;/p&gt;');</p>
+<p>var map = '&lt;iframe style="width: 100%; height: 600px;" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.ca/maps?source=s_d&amp;saddr=' + LAT +',+' + LONG +'&amp;daddr=<b>**YOUR_DESTINATION_HERE**</b>&amp;ie=UTF8&amp;t=h&amp;output=embed"&gt;&lt;/iframe&gt;';</p>
+<p>$('#Map').append(map);</p>
+<p>}</p>
+<p>function error(){<br />/*Error Code*/<br />}</p>
+<p>function MakeMap(){<br />if (navigator.geolocation) {<br />navigator.geolocation.getCurrentPosition(success, error);<br />} else {</p>
+<p>}<br />}</p>
+<p>MakeMap();<br />});<br />&lt;/script&gt;</p>
+<p><b>Note**</b> the destination should look like this: 147+Wyndham+Street+N+,+Suite+206,+Guelph,+On,+N1H+4E9</p>
+</div></div></div>
+</div><div id="push">&nbsp;</div></div><!-- pageBody--></div><!-- pageWrapper--><div id="pageFooterWrapper"><div id="pageFooterBody"></div></div></body></html>

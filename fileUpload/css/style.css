@@ -1,0 +1,319 @@
+@import "styleLib.less";
+/*Text Properties*/
+
+@defaultFontSize : 14;
+@defaultFontColor : #000;
+
+@defaultFont: 'Helvetica, Arial, Sans-Serif';
+
+@defaultHeaderFont: 'Helvetica, Arial, Sans-Serif';
+
+@defaultHeaderColor : #f00;
+
+
+@defaultLinkColor : lighten(@defaultHeaderColor, 25%);
+@defaultHoverColor : @defaultHeaderColor;
+
+
+/*Site Properties*/
+@siteMaxWidth: 1024px;
+@siteMinWidth: 480px;
+
+@sitePrimaryColor1: #000000;
+@sitePrimaryColor2: #009999;
+@sitePrimaryColor3: #ff0000;
+@siteBackgroundColor: #fefefe;
+
+@siteMiniHeaderHeight: 50px;
+@siteFooterHeight: 100px;
+
+/*Site CSS*/
+@import "menuCss.less"; /*Must be a .less file to work and read variables*/
+
+
+html, body {height: 100%;}
+
+body{
+	margin: 0px;
+	padding: 0px;
+	font-size: 	@defaultFontSize + 0px;
+	font-family: @defaultFont;
+	position: relative;
+	background-color: @siteBackgroundColor;
+	min-width: 480px;
+}
+
+body *{
+	font-family: @defaultFont;
+}
+
+/*Sticky Footer CSS */
+
+body:before {
+	content:"";
+	height:100%;
+	float:left;
+	width:0;
+	margin-top:-32767px;
+}
+
+#wrap {min-height: 100%;}
+
+#main {
+	/*overflow:auto;*/
+	padding-bottom: @siteFooterHeight;
+	width: 100%;
+}  /* must be same height as the footer */
+
+#footer {
+	position: relative;
+	margin-top: -1 * @siteFooterHeight; /* negative value of footer height */
+	height: @siteFooterHeight;
+	clear:both;
+} 
+
+/*End Sticky Footer CSS */
+
+.toEms( @fontSize ){
+	@size : (@fontSize / @defaultFontSize);
+	font-size: @size + 0em;
+	line-height: (1.6 * @size) + 0em;
+	margin: ( .8 * @fontSize) + 0px 0px;	
+}
+
+h1, h2, h3, h4, h5,h6{
+	.clear;
+}
+
+h1{
+	.toEms( @defaultFontSize * 2 );
+	line-height: (1.05 *  ( @defaultFontSize * 2 / @defaultFontSize) ) + 0em;
+	color: @defaultHeaderColor;
+}
+
+h2{
+	.toEms( @defaultFontSize * 1.8 );
+	line-height: (1.1 *  ( @defaultFontSize * 1.8 / @defaultFontSize) ) + 0em;
+	color: lighten(@defaultHeaderColor, 10%);
+}
+
+h3{
+	.toEms( @defaultFontSize * 1.6 );
+	color: lighten(@defaultHeaderColor, 20%);
+}
+
+h4{
+	.toEms( @defaultFontSize * 1.4 );
+	color: lighten(@defaultHeaderColor, 25%);
+}
+
+h5{
+	.toEms( @defaultFontSize * 1.2 );
+	color: lighten(@defaultHeaderColor, 30%);
+}
+
+h6{
+	.toEms( @defaultFontSize * 1.0 );
+	color: lighten(@defaultHeaderColor, 35%);
+}
+
+
+p, a, span, div, td{
+	.toEms( @defaultFontSize );
+	color: @defaultFontColor;
+}
+
+p{
+	width: 100%;
+}
+
+
+div, td{
+	margin: 0px;
+}
+
+a{
+	color: @defaultLinkColor;
+	text-decoration: none;	
+	cursor: pointer;
+	&:visited{	color: lighten(@defaultHoverColor, 40%); }
+	&:hover{	color: @defaultHoverColor; text-decoration: underline; }
+	img{ border: none; }
+}
+
+/*Site CSS*/
+#main,
+#wrap,
+.siteSection{
+	width: 100%;
+}
+
+.siteContent{
+	width: 96%;
+	max-width: 1024px;
+	min-width: 480px;
+	padding-left: 2%;	
+	padding-right: 2%;	
+	margin: 0 auto;	
+	overflow-x: hidden;
+	position: relative;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.mobileDevice .siteContent{
+
+}
+
+	.desktopDevice .siteContent{ width: 1024px; max-width: 1024px; }
+	.tablet .siteContent{ width: 80%; }
+	.phone .siteContent{ width: 480px; max-width: 480px;}
+
+
+/*
+.siteContent{
+	@padding: 20px;
+	
+	max-width: @siteMaxWidth;
+	min-width: @siteMinWidth;
+	width: 100%;
+	position: relative;
+	margin: 0 auto;
+}*/
+
+#srollHeaderBar{
+	display: none;
+	position: fixed;
+	top: -1px;
+	min-height: @siteMiniHeaderHeight;
+	border-bottom: 1px solid @sitePrimaryColor1;
+	width: 100%;
+	overflow-x: hidden;
+	padding-top: 10px;
+	color: #fff;
+	padding-bottom: 10px;
+}	
+
+.showMiniMenu #srollHeaderBar{
+	display: block;
+	z-index: 100;
+	.verticalGradient(@sitePrimaryColor1, @sitePrimaryColor3);
+}
+
+#header{
+	//.verticalGradient(@sitePrimaryColor1, @sitePrimaryColor3);
+	height: 100px;
+	border-bottom: 1px solid @sitePrimaryColor1;
+	width: 100%;
+	.clear;	
+	display: block;	
+}
+	#logo{ float: left; clear: left;   height: 100px; margin-right: 20px; display: block; width: 200px;}
+	
+	#logo img{
+		height:	@siteMiniHeaderHeight;
+		width: 200px;
+		margin-top:  25px;
+	}
+
+	#siteTitle{
+		padding: 10px 0px;
+		color: @sitePrimaryColor3; 	
+	}
+
+
+
+#footer{
+	border-top: 1px solid @sitePrimaryColor1;	
+	.verticalGradient(@sitePrimaryColor3, @sitePrimaryColor1);
+	.siteContent{
+		@footerPadding: 20px;
+		padding: @footerPadding 0px;
+		height:	@siteFooterHeight - (2*@footerPadding);
+	}
+	
+	width: 100%;
+	.clear;	
+	display: block;	
+}
+	
+
+.loadingImg{
+	background-image: url('../img/ajax-loader.gif');
+	background-repeat: no-repeat;
+	background-position: center;
+	min-height: 30px;
+	min-width: 30px;
+	display: block;
+}
+.mobileDevice .bigImg{
+	max-width: (@siteMinWidth - 20) !important;
+}
+
+	
+/*Other*/
+.frame( @frameSize: 10px, @frameColor: #fff, @shadowsize: 3px){
+	padding: @frameSize;
+	background-coor: @frameColor;
+	.box-shadow (@x: 3px, @y: 3px, @blur: @shadowsize, @color: #000);
+	border: 1px solid  darken(@frameColor, 20%);
+}
+
+.floatLeftFrame( @frameSize: 10px, @frameColor: #fff, @shadowsize: 3px){
+	float: left;
+	margin: @frameSize;
+	.frame( @frameSize, @frameColor, @shadowsize);
+}
+
+.floatRightFrame( @frameSize: 10px, @frameColor: #fff, @shadowsize: 3px){
+	float: right;
+	margin: @frameSize;
+
+	.frame( @frameSize, @frameColor, @shadowsize);
+}
+
+
+.frameImageLeft > img,
+img.frameImageLeft{
+	.floatLeftFrame;
+}
+
+.frameImageRight > img,
+img.frameImageRight{
+	.floatRightFrame;
+}
+
+.frameImage > img,
+img.frameImage{
+	margin: 10px;
+	.frame();
+}
+
+
+#toolTipText{
+	padding: 20px;
+	background-color: #fff;
+	z-index: 1000;
+	min-width: 50px;
+	max-width: 250px;
+	.box-shadow;
+	display: none;
+}
+/*End Other*/
+
+
+.genColora{
+	.genColor( #ff0000 );
+}
+
+.genColorb{
+	.genColor( #0000ff );
+}
+
+.genColorc{
+	.genColor( #fe4d4c );
+}
+
+.tetrad{
+	.tetrad( #fe4d4c , 55, 4);
+}

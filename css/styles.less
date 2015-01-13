@@ -1,0 +1,53 @@
+//variables
+@pageWidth: 1024px;
+@pageHeaderHeight: 150px;
+
+@defaultFont: Georgia, serif;
+@defaultFontSize: 14px;
+@defaultLineHeight: 26px;
+@defaultTextShadow: #262626 0 -1px 1px;
+
+*{
+	font-family: @defaultFont;
+	font-size: @defaultFontSize;
+	line-height: @defaultLineHeight;
+}
+
+#pageHeader{
+	height: @pageHeaderHeight;
+}
+
+#pageHeader h1{
+	height: @pageHeaderHeight;
+	line-height: @pageHeaderHeight;
+	font-size: 36px;
+}
+
+
+
+#pageWrapper {
+	width: @pageWidth;
+	margin: 0 auto -(@pageHeaderHeight / 2); /*same height as footer*/
+}
+
+#pageMenu{
+	width: @pageWidth;
+}
+
+#push{
+	clear: both;
+	margin-top: 20px;
+}
+
+#push,
+#pageFooterWrapper{
+	height: @pageHeaderHeight / 2; /*header height / 2*/
+}
+
+
+//mixins
+.rounded-corners (@radius: 5px) { //5px default
+  border-radius: @radius;
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+}

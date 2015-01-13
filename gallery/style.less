@@ -1,0 +1,309 @@
+.rounded-corners (@radius: 3px) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  -ms-border-radius: @radius;
+  -o-border-radius: @radius;
+  border-radius: @radius;
+}
+
+.rotate(@deg: 0deg, @x: 0px, @y: 0px){
+	-moz-transform: scale(1) rotate(@deg) translateX(@x) translateY(@y) skewX(0deg) skewY(0deg);
+	-webkit-transform: scale(1) rotate(@deg) translateX(@x) translateY(@y) skewX(0deg) skewY(0deg);
+	-o-transform: scale(1) rotate(@deg) translateX(@x) translateY(@y) skewX(0deg) skewY(0deg);
+	-ms-transform: scale(1) rotate(@deg) translateX(@x) translateY(@y) skewX(0deg) skewY(0deg);
+	transform: scale(1) rotate(@deg) translateX(@x) translateY(@y) skewX(0deg) skewY(0deg); 
+}
+
+.transitionTime(@t: .5s){
+	-webkit-transition: all @t ease-in-out;
+	-moz-transition: all @t ease-in-out;
+	-ms-transition: all @t ease-in-out;
+	-o-transition: all @t ease-in-out;
+	transition: all @t ease-in-out;
+}
+
+.box-shadow (@x: 0, @y: 0, @blur: 4px, @color: rgba(0,0,0, .75) ) {
+	box-shadow: @arguments;
+	-moz-box-shadow: @arguments;
+	-webkit-box-shadow: @arguments;
+}
+
+.ellipsis{
+	white-space: nowrap;
+	width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.noSelect{
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.clear{
+	clear: both;
+}
+
+.photoDeck{
+	@width: 100px;
+	@height: 100px;
+	@captionHeight: 30px;
+	
+	width: @width;
+	height: @height + @captionHeight;	
+	display: block;
+	position: relative;
+	
+	float: left;
+	
+	margin: 40px;
+	
+	.photo{
+		position: absolute;
+		.noSelect;
+		
+		.rotate;
+		.transitionTime;
+	}
+
+	.midPic{
+		.box-shadow;
+	}
+}
+
+.photoDeck:hover{
+	.photo{
+		.box-shadow;
+		.transitionTime(.3s); 
+		cursor: pointer;
+	}
+}
+
+.photo{
+	@width: 100px;
+	@height: 100px;
+	@captionHeight: 30px;
+	
+	width: @width;
+	height: @height + @captionHeight;
+	display: block;
+	border: 1px solid #e1e1e1;
+	padding: 4px;
+	background-color: #fff;
+	
+	
+	.image{
+		width: @width;
+		height: @height;
+		display: block;
+		text-align: center;
+	}
+
+	.caption{
+		width: @width;
+		height: @captionHeight;
+		line-height: @captionHeight;
+		.ellipsis;
+		.clear;
+		border-top: 1px solid #e1e1e1;
+		font-size: 10px;
+	}
+}
+
+.fanPhotoDeck .midPic{ z-index: 10; }
+.fanPhotoDeck:hover{
+	.leftPic_2{ .rotate(-30deg, -30px, 0px);  z-index: 1; } 
+	.leftPic_1{ .rotate(-15deg, -15px, 0px); z-index: 5; } 
+	.midPic{ .rotate; z-index: 10; }
+	.rightPic_1{ .rotate(15deg, 15px, 0px);  z-index: 5; }
+	.rightPic_2{ .rotate(30deg, 30px, 0px);  z-index: 1; }
+}
+
+.wipeLeftPhotoDeck:hover{
+	.leftPic_2{ .rotate(-40deg, -40px, 0px);  z-index: 1; } 
+	.leftPic_1{ .rotate(-30deg, -30px, 0px); z-index: 5; } 
+	.midPic{ .rotate(-20deg, -20px, 0px); z-index: 10; }
+	.rightPic_1{ .rotate(-10deg, -10px, 0px);  z-index: 15; }
+	.rightPic_2{ .rotate(5deg, 5px, 0px);  z-index: 20; }
+}
+
+.wipeRightPhotoDeck .leftPic_2{  z-index: 20; }
+.wipeRightPhotoDeck:hover{
+	.leftPic_2{ .rotate(40deg, 40px, 0px);  z-index: 20; }
+	.leftPic_1{ .rotate(30deg, 30px, 0px); z-index: 15; } 
+	.midPic{ .rotate(20deg, 20px, 0px); z-index: 10; }
+	.rightPic_1{ .rotate(10deg, 10px, 0px);  z-index: 5; }
+	.rightPic_2{ .rotate(-5deg, -5px, 0px);  z-index: 1; }
+}
+
+.starPhotoDeck .midPic{ z-index: 10; }
+.starPhotoDeck:hover{
+	.leftPic_2{ .rotate(22deg, -20px, 60px);  z-index: 1; } 
+	.leftPic_1{ .rotate(-22deg, -20px, -60px); z-index: 5; } 
+	.midPic{ .rotate; z-index: 10; }
+	.rightPic_1{ .rotate(22deg, 20px, -60px);  z-index: 5; }
+	.rightPic_2{ .rotate(-22deg, 20px, 60px);  z-index: 1; }
+}
+
+.swipeLeftPhotoDeck .leftPic_2{  z-index: 20; }
+.swipeLeftPhotoDeck:hover{
+	.leftPic_2{  z-index: 20; left: -30px;}
+	.leftPic_1{  z-index: 15; left: -15px; } 
+	.midPic{  		z-index: 10; left: 0px; }
+	.rightPic_1{   z-index: 5;  left: 15px; }
+	.rightPic_2{   z-index: 1; left: 30px; }
+}
+
+.swipeRightPhotoDeck:hover{
+	.leftPic_2{  z-index: 0; left: -30px;}
+	.leftPic_1{  z-index: 5; left: -15px; } 
+	.midPic{  		z-index: 10; left: 0px; }
+	.rightPic_1{   z-index: 15;  left: 15px; }
+	.rightPic_2{   z-index: 20; left: 30px; }
+}
+
+.crossPhotoDeck .rightPic_1{ 	z-index: 10; }
+.crossPhotoDeck:hover{
+	.leftPic_2{  z-index: 0; left: -40px;}
+	.leftPic_1{  z-index: 0; top: -40px; } 
+	.midPic{  		z-index: 0; left: 0px; }
+	.rightPic_1{   z-index: 10;  top: 40px; }
+	.rightPic_2{   z-index: 0; left: 40px; }
+}
+
+.diamondPhotoDeck .midPic{ 	z-index: 10; }
+.diamondPhotoDeck:hover{
+	.leftPic_2{  z-index: 0; left: -40px; top: -40px;}
+	.leftPic_1{  z-index: 0; top: -40px; left: 40px;} 
+	.midPic{  		z-index: 10; left: 0px; }
+	.rightPic_1{   z-index: 0;  top: 40px; left: -40px;}
+	.rightPic_2{   z-index: 0; left: 40px; top: 40px; }
+}
+
+.wipeDownPhotoDeck .rightPic_2{   z-index: 20; }
+.wipeDownPhotoDeck:hover{
+	.leftPic_2{  z-index: 5;  top: -40px;}
+	.leftPic_1{  z-index: 10; top: -20px; } 
+	.midPic{  	z-index: 15; left: 0px; }
+	.rightPic_1{   z-index: 20;  top: 20px; }
+	.rightPic_2{   z-index: 25; top: 40px; }
+}
+
+.wipeUpRightPhotoDeck .leftPic_2{   z-index: 25; }
+.wipeUpRightPhotoDeck:hover{
+	.leftPic_2{  z-index: 25;  top: -40px; left: 40px;}
+	.leftPic_1{  z-index: 20; top: -20px; left: 20px } 
+	.midPic{  	z-index: 15; left: 0px; }
+	.rightPic_1{   z-index: 10;  top: 20px; left: -20px}
+	.rightPic_2{   z-index: 5; top: 40px; left: -40px;}
+}
+
+.wipeUpLeftPhotoDeck .leftPic_2{   z-index: 25; }
+.wipeUpLeftPhotoDeck:hover{
+	.leftPic_2{  z-index: 25;  top: -40px; left: -40px;}
+	.leftPic_1{  z-index: 20; top: -20px; left: -20px } 
+	.midPic{  	z-index: 15; left: 0px; }
+	.rightPic_1{   z-index: 10;  top: 20px; left: 20px}
+	.rightPic_2{   z-index: 5; top: 40px; left: 40px;}
+}
+
+.leftCaterpillarPhotoDeck .leftPic_2{   z-index: 25; }
+.leftCaterpillarPhotoDeck:hover{
+	.leftPic_2{  z-index: 25;  left: -60px;}
+	.leftPic_1{  z-index: 20; top: -30px; left: -30px } 
+	.midPic{  	z-index: 15; left: 0px; }
+	.rightPic_1{   z-index: 10;  top: -30px; left: 30px}
+	.rightPic_2{   z-index: 5; top: 0px; left: 60px;}
+}
+
+.rightCaterpillarPhotoDeck .rightPic_2{   z-index: 25; }
+.rightCaterpillarPhotoDeck:hover{
+	.leftPic_2{  z-index: 5;  left: -60px;}
+	.leftPic_1{  z-index: 10; top: -30px; left: -30px } 
+	.midPic{  	z-index: 15; left: 0px; }
+	.rightPic_1{   z-index: 20;  top: -30px; left: 30px}
+	.rightPic_2{   z-index: 25; top: 0px; left: 60px;}
+}
+
+.wave2PhotoDeck:hover{
+	.leftPic_2{  z-index: 5;  left: -60px;}
+	.leftPic_1{  z-index: 10; top: 30px; left: -30px } 
+	.midPic{  	z-index: 15; left: 0px; }
+	.rightPic_1{   z-index: 20;  top: 30px; left: 30px}
+	.rightPic_2{   z-index: 25; top: 0px; left: 60px;}
+}
+
+.wave1PhotoDeck .leftPic_2{  z-index: 25; }
+.wave1PhotoDeck:hover{
+	.leftPic_2{  z-index: 25;  left: -60px;}
+	.leftPic_1{  z-index: 20; top: 30px; left: -30px } 
+	.midPic{  	z-index: 15; left: 0px; }
+	.rightPic_1{   z-index: 10;  top: 30px; left: 30px}
+	.rightPic_2{   z-index: 5; top: 0px; left: 60px;}
+}
+
+.page{ padding: 20px; width: 1024px; margin: 0 auto; }
+
+
+.xboxTile(@tileSize:20px){
+
+	.transitionTime(.5s); 
+	height: @tileSize;
+	width: @tileSize;
+	display: block;
+	border: 1px solid #000;
+	position: relative;
+	.topLeftRegion{  height: @tileSize / 2; width: @tileSize / 2; position: absolute; top: 0px; left: 0px; display: block;}
+	.topRightRegion{  height: @tileSize / 2; width: @tileSize / 2; position: absolute; top: 0px; right: 0px; display: block;}
+	.bottomLeftRegion{  height: @tileSize / 2; width: @tileSize / 2; position: absolute; bottom: 0px; left: 0px; display: block;}
+	.bottomRightRegion{  height: @tileSize / 2; width: @tileSize / 2; position: absolute; bottom: 0px; right: 0px; display: block;}
+
+ -webkit-transform-origin: @tileSize / 2 @tileSize / 2;  
+
+	&.topLeftRegion{
+		background-color: #f00;
+
+	}
+	
+	&.topRightRegion{
+		background-color: #ff0;
+	}
+	
+	&.bottomLeftRegion{
+		background-color: #0ff;
+		
+		
+	}
+	
+	&.bottomRightRegion{
+		background-color: #00f;
+
+		
+
+		
+	}
+
+}
+
+.xboxTile{
+	.xboxTile(100px);
+	transform-style: preserve-3d;
+	float: left;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

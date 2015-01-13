@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>Brendon Irwin's WebPage</title><!--Brendon Irwin&rsquo;s Page, cached and compressed for optimal speed. Cached & Compressed on Thursday 1st of May 2014 07:27:53 AM--><meta name='description' content="Brendon Irwin's personal website" /><meta name='Keywords' content="Brendon Irwin, Brendon, Bren1818" /><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/><link rel="apple-touch-icon" href="/images/apple_touch_icon.png" /><link href='/css/cache_master.css' rel='stylesheet' type='text/css' /><link rel="stylesheet/less" type="text/css" href="/css/styles.less"><link rel="stylesheet" href="/admin/Admin_Includes/CodeMirror/lib/codemirror.css"/><script type="text/javascript" src="/admin/Admin_Includes/CodeMirror/lib/codemirror.js"></script><script type="text/javascript" src="/admin/Admin_Includes/CodeMirror/mode/xml/xml.js"></script><script type="text/javascript" src="/admin/Admin_Includes/CodeMirror/mode/javascript/javascript.js"></script><script type="text/javascript" src="/admin/Admin_Includes/CodeMirror/mode/css/css.js"></script><script type="text/javascript" src="/admin/Admin_Includes/CodeMirror/mode/htmlmixed/htmlmixed.js"></script><script type='text/javascript' src='/js/cache_master.js'></script> <!--<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'/><link href='http://fonts.googleapis.com/css?family=Dynalight' rel='stylesheet' type='text/css'/>--><script type="text/javascript">var pageId = 0;</script></head><body><div id="pageWrapper">	<div id="pageHeader">
+		<h1>Sticky Note!</h1>
+	</div>
+<div id="pageMenu"><ul class="menu_parent menu_horizontal menu_submenu_top"><li class="menu_item tier_0 menu_1"><a class="menu_item" href="/">Home</a></li><li class="menu_item tier_0 menu_2"><a class="menu_item" href="/links">Useful Links</a></li><li class="menu_item tier_0 menu_4"><a class="menu_item" href="#">Coding</a><ul class="menu_submenu tier1"><li class="menu_submenu_item tier_1 menu_57"><a class="menu_submenu_item" href="/regex">Regular Expressions</a></li><li class="menu_submenu_item tier_1 menu_58"><a class="menu_submenu_item" href="/evaltest">Using Eval PHP</a></li><li class="menu_submenu_item tier_1 menu_59"><a class="menu_submenu_item" href="/geomap">Location and G Maps</a></li><li class="menu_submenu_item tier_1 menu_67"><a class="menu_submenu_item" href="/jquery">Jquery Snippets</a></li><li class="menu_submenu_item tier_1 menu_68"><a class="menu_submenu_item" href="/javascript">Javascript vs JQuery</a></li><li class="menu_submenu_item tier_1 menu_69"><a class="menu_submenu_item" href="/csselectors">CSS Selectors</a></li><li class="menu_submenu_item tier_1 menu_70"><a class="menu_submenu_item" href="/sqlite">SQLite and Offline Storage</a></li></ul></li><li class="menu_item tier_0 menu_6"><a class="menu_item" href="/about">About Me</a><ul class="menu_submenu tier1"><li class="menu_submenu_item tier_1 menu_60"><a class="menu_submenu_item" href="/cover">Cover Letter</a></li><li class="menu_submenu_item tier_1 menu_7"><a class="menu_submenu_item" href="resume">Resume</a></li></ul></li><li class="menu_item tier_0 menu_9"><a class="menu_item" href="#">Other</a><ul class="menu_submenu tier1"><li class="menu_submenu_item tier_1 menu_10"><a class="menu_submenu_item" href="fringe">Fringe</a></li><li class="menu_submenu_item tier_1 menu_11"><a target="_blank" class="menu_submenu_item" href="http://brendonirwin.dyndns.org:24811/gui/">uTorrent Web UI</a></li><li class="menu_submenu_item tier_1 menu_66"><a class="menu_submenu_item" href="/sticky">Sticky Note</a></li><li class="menu_submenu_item tier_1 menu_62"><a target="_blank" class="menu_submenu_item" href="/admin">Admin</a></li></ul></li></ul></div><div id="pageBody">
+<script type="text/javascript">
+	$(function(){
+		var change = 0;
+		var checkSave;
+		var url = "/admin/module_save_note.php";
+		function stripslashes (str) {
+			 return (str + '').replace(/\\(.?)/g, function (s, n1) {
+				switch (n1) {
+				case '\\':
+					return '\\';
+				case '\'':
+					return "'";
+				case '0':
+					return '\u0000';
+				case '':
+					return '';
+				default:
+					return n1;
+				}
+			});
+		}
+		
+		function saveNote(){
+			if( change == 1){
+				change = 0;
+				var noteText = encodeURI( $('#sticky').val() );
+				$.post( url, { note: noteText },function( data ) { });
+			}else{
+				$('#check').load(url + "?loadNote=1", function( data) {
+					if( $('#check').html() != "" && $('#check').html() != $('#sticky').val() ){
+						var note = $('#check').html();
+						//console.log(note);
+						
+						note = decodeURI( note );
+						//console.log("After Decode > " + note);
+						note = unescape(   note  );
+						//console.log("After un escape > " + note);
+						
+						note = stripslashes (   note  );
+						//console.log("After un escape > " + note);
+						
+						$('#sticky').val( note );
+					}
+				});
+			}
+			clearInterval(checkSave);
+			checkSave = window.setInterval(saveNote, 10000);
+		}
+		
+		function checkSaveBeforeLeave(e){
+			e = e || window.event;
+			if( change == 1){
+				return "Click Save before leaving to avoid loosing changes";
+			}
+		}
+		$('#sticky').keyup(function() { change = 1; });
+		$("#sticky").change( function() { change = 1; });
+		
+		$('#SaveSticky').click(function(){
+			change = 1;
+			saveNote();
+		});
+		
+		saveNote(); // load the note
+		
+		checkSave = window.setInterval(saveNote, 10000);
+		window.onbeforeunload = checkSaveBeforeLeave;
+	});
+</script>
+
+<style type="text/css">
+	#sticky{
+		border: none;
+		background-color: rgb(245,247,173);
+		color: #000;
+		font-size: 14px;
+		line-height: 16px;
+		margin-top: 10px;
+	}
+</style>
+
+<div id="StickyNote">
+	<div id="check" style="display: none"></div>
+	<textarea id="sticky" rows="20" cols="120" style="width: 100%;"></textarea>
+	<button id="SaveSticky">Save</button>
+</div>
+
+<div id="push">&nbsp;</div></div><!-- pageBody--></div><!-- pageWrapper--><div id="pageFooterWrapper"><div id="pageFooterBody"><p id="footerText">&copy; Brendon Irwin &ndash; 2012 | <g:plusone size="small"></g:plusone> <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fbrendonirwin.dyndns.org&amp;send=false&amp;layout=standard&amp;width=150&amp;show_faces=false&amp;action=recommend&amp;colorscheme=light&amp;font=arial&amp;height=35" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:90px; height:24px;" allowTransparency="true"></iframe></p></div></div></body></html>
